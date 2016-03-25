@@ -15,7 +15,7 @@ Now create networks.list. Include all your networks CIDR
 
 ```
 echo "10.10.0.0/20
-10.200.0.0/19" > /etc/networks.list
+10.200.0.0/19" > /etc/networks_list
 ````
 
 Add your whitelist networks:

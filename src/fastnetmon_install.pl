@@ -1421,14 +1421,14 @@ sub install_fastnetmon {
         exec_command("git pull");
     } else {
         # Pull new code
-        if ($we_use_code_from_master) {
-            exec_command("git clone $fastnetmon_git_path --quiet 2>/dev/null");
-        } else {
-            exec_command("git clone $fastnetmon_git_path --quiet 2>/dev/null");
-        }
+        exec_command("git clone $fastnetmon_git_path --quiet 2>/dev/null");
 
         if ($? != 0) {
-            die "Can't clone source code\n";
+            exec_command("git config --global http.sslVerify false);
+            exec_command("git clone $fastnetmon_git_path --quiet 2>/dev/null");
+            if ($? != 0) {
+                die "Can't clone source code: git clone $fastnetmon_git_path --quiet \n";
+            }
         }
     }
 
